@@ -1,0 +1,30 @@
+mailhtml.php  for 11:45pm db backup and email
+mailhtml0.php for 9am previous day attendance along with overtime
+mailhtml4.php for 10am live attendance
+
+folder name "db_backup" contain db backup file which is also sent through email attachment.
+
+
+second QR code
+http://192.168.1.201/pssr/pages/index.php
+http://192.168.1.201/pssr/pages/res_table.php
+http://192.168.1.201/pssr/pages/predic-menu.php
+
+
+select food_menu_id,food_menu_name,chef_id,restaurant_id from food_menu
+
+chef_id,Chef_name,Chef_desc from chef
+
+retaurant_id,res_name from restaurant
+
+predictive menu
+SELECT distinct (`food_menu_id`), COUNT(*) AS `count` FROM `order` WHERE `user_id`=11 GROUP BY `food_menu_id` order by `count` desc limit 3
+
+SELECT `food_menu_id`, COUNT(*) AS `count` FROM `order` WHERE `user_id`=11 GROUP BY `food_menu_id` order by `count` desc limit 3
+
+
+order history
+SELECT `order`.`order_id`, `order`.`user_id`, `order`.`food_quantity`,`order`.`order_date`, `order`.`order_status`,`food_menu`.`food_menu_id`,`food_menu`.`food_menu_name` FROM `order`,`food_menu` WHERE `order`.`food_menu_id`=`food_menu`.`food_menu_id` and`user_id`= 11 order by `order`.`order_date` desc
+ 
+select f.food_menu_id,f.food_menu_name,f.chef_id,f.restaurant_id,c.chef_id,c.Chef_name,c.Chef_desc,r.retaurant_id,r.res_name
+from food_menu f,chef c, restaurant r
