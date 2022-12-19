@@ -1,42 +1,11 @@
+<!-- <link rel="stylesheet" href="./files/index.css"> -->
+<?php require('header.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>HTML</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .About-us {
-	  width: 100%;
-	  text-align: center;
-	  background-color: #ccc;
-	  margin-top: 10px;
-	  margin-bottom: 10px;
-	}
-	h1{
-	  color: Blue;
-	  font-size: 25px;
-	}
-	img {
-	  border-radius: 10%;
-	}
-	
-	pre {
-	  font-size: 20px;
-	} 
-    h3 {
-	  text-shadow:
-	}
-    a {
-      padding: 20px;
-	  text-align: center;
-	  text-decoration: none;
-	  margin: 5px 2px;
-	  background: #3B5998;
-      color: white;
-	  border-radius: 8px;
-	 font-size: 50px;	  
-   } 
-</style>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
 <body>
   <div class="About-us">

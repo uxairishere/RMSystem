@@ -13,7 +13,7 @@ session_start();
 if (!$_SESSION['user_id']==11) {
 header("location:index.php");
 } 
-include('header_admin.php');
+include('header.php');
 $inactive = 360; // Set timeout period in seconds
 if (isset($_SESSION['timeout'])) {
     $session_life = time() - $_SESSION['timeout'];

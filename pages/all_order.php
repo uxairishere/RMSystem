@@ -28,7 +28,7 @@ if (isset($_SESSION['timeout'])) {
         header("Location: index.php");
     }
 }   
-include('header_admin.php');
+include('header.php');
 include('include/connection.php');
  
 ?>

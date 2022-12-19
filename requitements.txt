@@ -1,0 +1,8 @@
+add to cart
+food image uplaod
+resturant validation
+order cancel
+all order (user name)
+order cancel
+table reservation
+predictive menu (no of orders sts:  ok)

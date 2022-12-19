@@ -17,6 +17,8 @@ $_SESSION['user_id']=$result[0];
 $_SESSION['name']=$result[1];
 $_SESSION['proj_id']=$result[5];
 $_SESSION['role']=$result[3];
+$_SESSION['image']=$result['image'];
+
 if($result[0]==11){header("Location:all_order.php");}else
 header("Location:index.php");
 }

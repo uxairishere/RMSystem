@@ -3,7 +3,7 @@
 <?php
 session_start();
 session_destroy();
-
+require('./header.php');
 ?>
 <head>
 
@@ -40,8 +40,9 @@ session_destroy();
 
     <div class="container" >
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
+            <div class="col-md-12 ">
+                <h1 class="text-center" style="margin: 9rem 0 2rem 0 ; color: white; font-weight: 800;">Hungry? Let's login and order!</h1>
+                <div class="login-panel panel panel-default" style="width: 80%; margin: 0 auto 12rem auto">
                     <div class="panel-heading">
                         <h3 class="panel-title">MSR </h3>
                         
