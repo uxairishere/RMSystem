@@ -7,22 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <style>
-        .jumbotron {
-            padding: 0.1em 0.2em;
 
-            h3 {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1.2em;
-
-                .btn {
-                    padding: 0.5em;
-                }
-            }
-    </style>
 </head>
 
 <body style="background-color: #FDF5EC;">
@@ -54,7 +39,7 @@
 
     ?>
 
-    <div style="width: 90%; margin: 5rem auto; border-radius: 12px;">
+    <div style="width: 90%; margin: 0rem auto; padding: 12rem 0 0 0; border-radius: 12px;">
         <div id="jssor_1" style="position:relative;margin:0 auto;top:-20px;left:0px;width:980px;height:320px;overflow:hidden;visibility:hidden;">
             <!-- Loading Screen -->
             <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
@@ -156,14 +141,16 @@
                 </div>
 
                 <?php
-                $food_query = "SELECT f.food_menu_id,f.food_menu_name, f.chef_id,f.restaurant_id, c.chef_name,c.chef_id,r.restaurant_id,r.res_name,f.pic,f.price,r.res_description from food_menu f, chef c, restaurant r where f.chef_id=c.chef_id and r.restaurant_id=f.restaurant_id and r.restaurant_id=$Restuarents2 and f.price<=$curr_price";
+                $food_query = "SELECT f.food_menu_id,f.food_menu_name, f.chef_id,f.restaurant_id, c.chef_name,c.chef_id,r.restaurant_id,r.res_name,f.pic,f.price,r.res_description, f.rating from food_menu f, chef c, restaurant r where f.chef_id=c.chef_id and r.restaurant_id=f.restaurant_id and r.restaurant_id=$Restuarents2 and f.price<=$curr_price";
                 //echo $food_query;
                 $row_food_query = mysqli_query($link, $food_query);
                 $card_orders = [];
                 while ($rowfood = mysqli_fetch_array($row_food_query)) { ?>
 
-                    <div class="col-md-4">
-                        <h3><?php echo $rowfood[1];  ?></h3>
+                    <div class="col-md-12">
+                        <a href="viewOrder.php?foodid=<?php echo $rowfood[0]; ?>">
+                            <h3><?php echo $rowfood[1];  ?></h3>
+                        </a>
                         Price per unit: Rs. <?php echo $rowfood[9]; ?>
                         <form id="mainatt2" name="mainatt2" method="POST" action="addToCart.php">
                             <input type="text" name="foodprice" value="<?php echo $rowfood[9]; ?>" style="display: none;"></input>
@@ -182,17 +169,32 @@
                             <input type="hidden" id="user_id" name="user_id" value="<?php if (isset($_SESSION['user_id'])) {
                                                                                         echo $_SESSION['user_id'];
                                                                                     } ?>">
-                            <input type="submit" name="submit" value="Place order" class="btn btn-primary" <?php if (isset($_SESSION['user_id'])) {
-                                                                                                                echo "";
-                                                                                                            } else { ?>disabled title="please log in for order placement" <?php } ?>>
-                        <button class="btn btn-warning"><i class="fa fa-shopping-cart"></i>+</button>
-                            
+                            <?php if (!isset($_SESSION['user_id'])) { ?>
+                                <a class="btn btn-warning" href="login.php">ADD TO CART <i class="fa fa-shopping-cart"></i>+</a>
+                            <?php } else { ?>
+                                <button type="submit" class="btn btn-warning">ADD TO CART <i class="fa fa-shopping-cart"></i>+</button>
+
+                            <?php } ?>
+                            <!-- rating area  -->
                         </form>
-                        <!-- <form action="addToCart.php" method="">
-                        <button class="btn btn-warning"><i class="fa fa-home"></i>+</button>
-                        </form> -->
-                    </div>
-                    <div class="col-md-8">
+                        <!-- stars start  -->
+                        <form method="POST" action="ratingtest.php">
+                            <span class="star-rating star-5">
+                                <input type="radio" name="rating" value="1"><i></i>
+                                <input type="radio" name="rating" value="2"><i></i>
+                                <input type="radio" name="rating" value="3"><i></i>
+                                <input type="radio" name="rating" value="4"><i></i>
+                                <input type="radio" name="rating" value="5"><i></i>
+                                <input type="hidden" name="pre_rating" value="<?php echo $rowfood[11]; ?>">
+                                <input type="hidden" name="food_id" value="<?php echo $rowfood[0]; ?>">
+
+
+                            </span>
+                            <input type="submit" name="submit_rating" value="Rate" />
+                        </form>
+
+                        <!-- stars end  -->
+                    
                         <div class="row">
                             <div class="col-md-4">
                                 Chef Name: <br>
@@ -201,12 +203,18 @@
                             <div class="col-md-4">Restaurant Name: <br>
                                 <h4><?php echo $rowfood[7]; ?></h4>Restaurant Speciality: <br>
                                 <h4><?php echo $rowfood[10]; ?></h4>
+                                <!-- <br/> -->
+                                <?php if ($rowfood[11] != '') { ?>
+                                    <?php for ($i = 0; $i < $rowfood[11]; $i++) {  ?>
+                                        <i style="color: gold;" class="fa fa-star"></i>
+                                <?php }
+                                } ?>
                             </div>
+
                             <div class="col-md-4" style="margin: 1rem auto 0 auto;"><img src="<?php echo $rowfood[8]; ?>" style="border-radius:10px;" height="165" width="167" /></div>
                         </div>
                     </div>
-                    <h1><?php //echo "hahhahhhahah".$order;   
-                        ?> </h1>
+
                 <?php  }   ?>
             </div>
 
@@ -275,9 +283,7 @@ Apply the same threshold support of 50% and consider the items that exceed 50% (
                                     <input type="hidden" id="food_name" name="food_name" value="<?php echo $rowfood[1]; ?>">
                                     <input type="hidden" id="food_id" name="food_id" value="<?php echo $rowfood[0]; ?>">
                                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-                                    <input type="submit" name="submit" value="Place order" class="btn btn-primary" <?php if (!$_SESSION['user_id']) { ?>disabled title="please log in for order placement" <?php
-
-                                                                                                                                                                                                        } ?>>
+                                    <input type="submit" name="submit" value="Place order" class="btn btn-primary" <?php if (!$_SESSION['user_id']) { ?>disabled title="please log in for order placement" <?php } ?>>
                                 </form>
                             </div>
 
