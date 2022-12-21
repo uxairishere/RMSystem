@@ -10,7 +10,7 @@
 
 </head>
 
-<body style="background-color: #FDF5EC;">
+<body>
     <?php
     session_start();
     include('header.php');
@@ -92,8 +92,8 @@
 
 
 
-    <div style="background-color:#FDF5EC;">
-        <div class="home_page_wrapper" style="width: 88%; margin: 0 auto; padding: 0 0 5rem 0;">
+    <div>
+        <div class="home_page_wrapper" style="width: 95%; margin: 0 auto; padding: 0 0 5rem 0;">
 
             <script>
                 function doSearch(text) {
@@ -104,9 +104,10 @@
             </script>
 
 
-            <div class="row" style=" padding: 1rem;color: black; border-width: 3px; border-style: solid; border-image:linear-gradient(to bottom,#996249,rgba(0, 0, 0, 0)) 1 100%;">
+            <div class="row" style=" padding: 1rem;color: black; border-width: 3px; ">
                 <div class="col-md-12 text-center">
-                    <h1 style="font-weight: 700;">Hungry in <span class="text-success">پاکستان</span>? We got you buddy!</h1>
+
+                    <h1 style="font-weight: 700;">Hungry in <span class="text-success">راولپنڈی</span>? We got you buddy!</h1>
                     <h4 align="right">Table Reservation <img src="images/table_reserve.png" align="right" style="margin-top:-40px; margin-left:10px" width="90px"></h4>
                 </div>
 
@@ -141,83 +142,65 @@
                 </div>
 
                 <?php
-                $food_query = "SELECT f.food_menu_id,f.food_menu_name, f.chef_id,f.restaurant_id, c.chef_name,c.chef_id,r.restaurant_id,r.res_name,f.pic,f.price,r.res_description, f.rating from food_menu f, chef c, restaurant r where f.chef_id=c.chef_id and r.restaurant_id=f.restaurant_id and r.restaurant_id=$Restuarents2 and f.price<=$curr_price";
+                $food_query = "SELECT f.food_menu_id,f.food_menu_name, f.chef_id,f.restaurant_id, c.chef_name,c.chef_id,r.restaurant_id,r.res_name,f.pic,f.price,r.res_description, f.rating, f.reviews from food_menu f, chef c, restaurant r where f.chef_id=c.chef_id and r.restaurant_id=f.restaurant_id and r.restaurant_id=$Restuarents2 and f.price<=$curr_price";
                 //echo $food_query;
                 $row_food_query = mysqli_query($link, $food_query);
                 $card_orders = [];
                 while ($rowfood = mysqli_fetch_array($row_food_query)) { ?>
 
-                    <div class="col-md-12">
-                        <a href="viewOrder.php?foodid=<?php echo $rowfood[0]; ?>">
-                            <h3><?php echo $rowfood[1];  ?></h3>
-                        </a>
-                        Price per unit: Rs. <?php echo $rowfood[9]; ?>
-                        <form id="mainatt2" name="mainatt2" method="POST" action="addToCart.php">
-                            <input type="text" name="foodprice" value="<?php echo $rowfood[9]; ?>" style="display: none;"></input>
-                            Food for number of persons: <select class="btn btn-primary" id="fperson" name="fperson">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
+                    <div class="col-md-6">
+                        <div class="row home-cards" style="width:90%; margin: 1rem auto; background-color: white; padding: 1rem; border-radius: 12px;">
+                            <div class="col-md-4 home-food-cover" style="background-image: url('<?php echo $rowfood[8] ?>'); border-radius: 12px"></div>
+                            <div class="col-md-8">
+                                
+                                <a href="viewOrder.php?foodid=<?php echo $rowfood[0]; ?>">
+                                    <h3><?php echo $rowfood[1];  ?></h3>
+                                </a>
+                                <h4><?php echo $rowfood[7]; ?></h4>
+                                <h4 style="color: green; font-weight: 700;">Rs. <?php echo $rowfood[9]; ?></h4>
+                                <!-- ratings  -->
+                                <?php for($i = 0; $i < $rowfood[11]; $i++){ ?>
+                                    <i class="fa fa-star" style="color: gold;"></i>
+                                <?php } ?>
+                                <?php echo '(' . $rowfood[12] . ')'; ?>
+                                <form id="mainatt2" name="mainatt2" method="POST" action="addToCart.php">
+                                    <input type="text" name="foodprice" value="<?php echo $rowfood[9]; ?>" style="display: none;"></input>
+                                    <select class="btn btn-primary" id="fperson" name="fperson">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
 
-                            <input type="hidden" id="food_image" name="food_image" value="<?php echo $rowfood[8]; ?>">
-                            <input type="hidden" id="food_name" name="food_name" value="<?php echo $rowfood[1]; ?>">
-                            <input type="hidden" id="food_id" name="food_id" value="<?php echo $rowfood[0]; ?>">
-                            <input type="hidden" id="user_id" name="user_id" value="<?php if (isset($_SESSION['user_id'])) {
-                                                                                        echo $_SESSION['user_id'];
-                                                                                    } ?>">
-                            <?php if (!isset($_SESSION['user_id'])) { ?>
-                                <a class="btn btn-warning" href="login.php">ADD TO CART <i class="fa fa-shopping-cart"></i>+</a>
-                            <?php } else { ?>
-                                <button type="submit" class="btn btn-warning">ADD TO CART <i class="fa fa-shopping-cart"></i>+</button>
+                                    <input type="hidden" id="food_image" name="food_image" value="<?php echo $rowfood[8]; ?>">
+                                    <input type="hidden" id="food_name" name="food_name" value="<?php echo $rowfood[1]; ?>">
+                                    <input type="hidden" id="food_id" name="food_id" value="<?php echo $rowfood[0]; ?>">
+                                    <input type="hidden" id="user_id" name="user_id" value="<?php if (isset($_SESSION['user_id'])) {
+                                                                                                echo $_SESSION['user_id'];
+                                                                                            } ?>">
+                                    <?php if (!isset($_SESSION['user_id'])) { ?>
+                                        <a class="btn grad-btn-2" href="login.php">ADD TO CART <i class="fa fa-shopping-cart"></i>+</a>
+                                    <?php } else { ?>
+                                        <button type="submit" class="btn btn-warning">ADD TO CART <i class="fa fa-shopping-cart"></i>+</button>
 
-                            <?php } ?>
-                            <!-- rating area  -->
-                        </form>
-                        <!-- stars start  -->
-                        <form method="POST" action="ratingtest.php">
-                            <span class="star-rating star-5">
-                                <input type="radio" name="rating" value="1"><i></i>
-                                <input type="radio" name="rating" value="2"><i></i>
-                                <input type="radio" name="rating" value="3"><i></i>
-                                <input type="radio" name="rating" value="4"><i></i>
-                                <input type="radio" name="rating" value="5"><i></i>
-                                <input type="hidden" name="pre_rating" value="<?php echo $rowfood[11]; ?>">
-                                <input type="hidden" name="food_id" value="<?php echo $rowfood[0]; ?>">
+                                    <?php } ?>
+                                    <!-- rating area  -->
+                                </form>
+                               
 
-
-                            </span>
-                            <input type="submit" name="submit_rating" value="Rate" />
-                        </form>
-
-                        <!-- stars end  -->
-                    
-                        <div class="row">
-                            <div class="col-md-4">
-                                Chef Name: <br>
-                                <h4><?php echo $rowfood[4]; ?>
+                                
                             </div>
-                            <div class="col-md-4">Restaurant Name: <br>
-                                <h4><?php echo $rowfood[7]; ?></h4>Restaurant Speciality: <br>
-                                <h4><?php echo $rowfood[10]; ?></h4>
-                                <!-- <br/> -->
-                                <?php if ($rowfood[11] != '') { ?>
-                                    <?php for ($i = 0; $i < $rowfood[11]; $i++) {  ?>
-                                        <i style="color: gold;" class="fa fa-star"></i>
-                                <?php }
-                                } ?>
-                            </div>
-
-                            <div class="col-md-4" style="margin: 1rem auto 0 auto;"><img src="<?php echo $rowfood[8]; ?>" style="border-radius:10px;" height="165" width="167" /></div>
                         </div>
                     </div>
+
 
                 <?php  }   ?>
             </div>
 
+
+            <!-- PREDICTIVE MENU  -->
             <?php if (isset($_SESSION['name'])) {  ?>
                 <div class="row" style=" padding: 1rem;color: black; border-width: 3px; border-style: solid; border-image:linear-gradient(to bottom,#996249,rgba(0, 0, 0, 0)) 1 100%;">
                     <h3 class="jumbotron">Predictive Menu </h3>
@@ -227,7 +210,6 @@
                     /*		
 Reference:
 https://www.digitalvidya.com/blog/apriori-algorithms-in-data-mining/
-
 Step 1
 Create a frequency table of all the items that occur in all the transactions. Now, prune the frequency table to include only those items having total number of order. 
 */
