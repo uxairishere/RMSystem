@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
             </div>
 
             <!-- confirm order  -->
-            <div class="cart-confirm-container text-center" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 2rem 0; margin: 1rem auto 4rem auto; border-radius: 12px; background-color: white;">
+            <div class="cart-confirm-container text-center  " style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 2rem 0; margin: 1rem auto 4rem auto; border-radius: 12px; background-color: white;">
                 <h2 style="font-weight: 700;">Our Rider is ready! Please confirm your order</h2>
                 <h2>Your Grand Total: <span style="color: green"><?php echo $grand_total; ?> Rupees</span></h2>
                 <form action="orderCart.php" method="POST">
@@ -81,8 +81,7 @@ if (isset($_SESSION['user_id'])) {
                 <h3>Your <?php echo $row['orderdesc'] ?></h3>
                 <h3>Amount: <?php echo $row['price'] ?> Rupees</h3>
                 <h3 style="color: green;">Status: <?php echo $row['order_status'] ?></h3>
-
-
+                <a href="./cancelOrder.php?id=<?php echo $row['id'];  ?>" class="btn grad-btn-danger" style="width: 20%; margin: 0 auto;">Cancel order</a>
                 </div>
                 <?php } ?>
 

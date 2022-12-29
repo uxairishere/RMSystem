@@ -267,9 +267,7 @@
       <ul class="nav navbar-nav">
         <!-- <li><img src="img\msr.png" width="60" /></li> -->
         <li class=""><a href="index.php"><i class="fa fa-home" style="color: greenyellow;"></i></a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="#about">Gallery</a></li>
-        <li><a href="news.php">News</a></li>
+        <li><a href="about.php">About</a></li>  
         <li><a href="contact.php">Contact</a></li>
         <li class="">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>

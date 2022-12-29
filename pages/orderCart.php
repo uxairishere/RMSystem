@@ -23,7 +23,15 @@ mysqli_query($link, $q) or die("could not insert into database");
 
 <body>
     <div class="text-center">
-        <h1>Your order has been places successfully</h1>
+        <div class="row" style="width: 80%; margin: 15rem auto 10rem auto;">
+            <div class="col-md-5">
+                <img src="images/cart.png" width="400"/>
+            </div>
+            <div class="col-md-7 text-center">
+                <h1 style="padding-top: 10rem; width: 80%; margin: 0 auto; font-weight: 700;" class="text-success">Your order has been places successfully!</h1>
+                <a class="btn grad-btn-4" href="/rms">Find more food</a>
+            </div>
+        </div>
     </div>
 </body>
 <?php include('footer.php'); ?>

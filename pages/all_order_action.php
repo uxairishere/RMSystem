@@ -25,7 +25,7 @@ $_SESSION['timeout'] = time();
  
 include('include/connection.php');
  $id = $_GET['id'];
-$q2="UPDATE `order` SET `order_status`='Delevered' WHERE `order`.`order_id`='".$_GET['id']."'";
+$q2="UPDATE `usercartorder` SET `order_status`='Delevered' WHERE `usercartorder`.`id`='".$_GET['id']."'";
 
 $row_food_query=mysqli_query($link,$q2) or die("could not perform action on database");
  echo $q2;
