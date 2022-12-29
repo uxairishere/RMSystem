@@ -308,7 +308,7 @@
       <ul class="nav navbar-nav navbar-right">
         <?php if (isset($_SESSION['user_id'])) { ?>
           <li class="nav-item dropdown">
-            <a style="padding: 1rem 3rem;  border: 1px solid green; border-radius: 12px;" class="nav-link dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><img src='<?php echo "/jawadfyp/pages/images/profiles/" . $_SESSION['image']; ?>' alt="profile_pic" width="30" style="border-radius: 50%;" /> Profile <i class="fa fa-arrow-down"></i></a>
+            <a style="padding: 1rem 3rem;  border: 1px solid green; border-radius: 12px;" class="nav-link dropdown-toggle" type="button" id="menu1" data-toggle="dropdown"><img src='<?php echo "/rms/pages/images/profiles/" . $_SESSION['image']; ?>' alt="profile_pic" width="30" style="border-radius: 50%;" /> Profile <i class="fa fa-arrow-down"></i></a>
             <ul class="dropdown-menu text-center" style="font-size: 2rem; background: linear-gradient(105deg,rgb(37, 40, 45) ,#2C3E50);" role="menu" aria-labelledby="menu1">
               <li><a style=" color: green; text-align:center;"><?php echo $_SESSION['name']; ?></a></li>
               <li><a style="text-align:center; color:white;" href="orderhistory.php">Order History </a></li>

@@ -5,6 +5,7 @@ session_start();
 session_destroy();
 require('./header.php');
 ?>
+
 <head>
 
     <meta charset="utf-8">
@@ -12,7 +13,7 @@ require('./header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-<link rel="icon" type="image/jpeg" href="images/favi.jpg">
+    <link rel="icon" type="image/jpeg" href="images/favi.jpg">
     <title>MSR</title>
 
     <!-- Bootstrap Core CSS -->
@@ -36,25 +37,25 @@ require('./header.php');
 
 </head>
 
-<body style="background-image:url(img/012.jpg);  background-repeat: no-repeat; background-position: 0 0;    background-size: cover;">
+<body style="background-color: white;">
 
-    <div class="container" >
+    <div class="container" style="padding: 7rem 0;">
         <div class="row">
-            <div class="col-md-12 ">
-                <h1 class="text-center" style="margin: 9rem 0 2rem 0 ; color: white; font-weight: 800;">Hungry? Let's login and order!</h1>
-                <div class="login-panel panel panel-default" style="width: 80%; margin: 0 auto 12rem auto">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">MSR </h3>
-                        
-                    </div>
-                    <div class="panel-body">
+        <div class="col-md-6">
+            <img src="images/signup.jpg" width="100%" />
+        </div>
+            <div class="col-md-6 ">
+                <h2 class="text-center" style="margin: 9rem 0 2rem 0 ; padding: 3rem 0; font-weight: 800;">Hungry? Let's login and order!</h2>
+                <div class="l" style="width: 80%; margin: 0 auto 12rem auto">
+                    
+                    <div class="text-center">
                         <form id="form1" name="form1" method="post" action="loginsession.php" role="form">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="email" name="email" id="email" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="user_pwd"  id="user_pwd"  type="password" value="">
+                                    <input class="form-control" placeholder="Password" name="user_pwd" id="user_pwd" type="password" value="">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -63,10 +64,10 @@ require('./header.php');
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="submit" value="Login" class="btn btn-lg btn-success btn-block">
-                               
+
                             </fieldset>
                         </form><br>
-                         <a href="index.php">Go to website Home</a>
+                        <a href="index.php">Go to website Home</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +85,7 @@ require('./header.php');
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-    <?php include 'footer.php';?>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
