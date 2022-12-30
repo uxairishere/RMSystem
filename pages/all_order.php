@@ -56,6 +56,7 @@
                         <th>Description</th>
                         <th>Date</th>
                         <th>Customer</th>
+                        <th>Phone</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -65,7 +66,7 @@
                     <?php
 
                     $a = 1;
-                    $q2 = "SELECT *, `proj_user`.`user_name`  FROM usercartorder, proj_user WHERE `proj_user`.`user_id`=`usercartorder`.`user_id` order by `order_date` asc";
+                    $q2 = "SELECT *, `proj_user`.`user_name`, `proj_user`.`cell`  FROM usercartorder, proj_user WHERE `proj_user`.`user_id`=`usercartorder`.`user_id` order by `order_date` asc";
 
                     $row_food_query = mysqli_query($link, $q2) or die("could not perform action on database");
                     //echo $q2;
@@ -77,13 +78,15 @@
 
                             <td><?php echo $rowfood['order_date']; ?></td>
                             <td><?php echo $rowfood['user_name']; ?></td>
+                            <td><?php echo $rowfood['cell']; ?></td>
+
                             <td><?php echo $rowfood['price']; ?></td>
 
                             <td><?php if ($rowfood['order_status'] == 'In Process!') {
                                     echo "<span style='color:red'>";
                                 }
                                 echo $rowfood['order_status']; ?></span></td>
-                            <td><?php if ($rowfood['order_status'] == 'Delevered') {
+                            <td><?php if ($rowfood['order_status'] == 'Delevered' || $rowfood['order_status'] == 'Cancelled') {
                                 } else { ?><a class="btn btn-primary" href="all_order_action.php?id=<?php echo $rowfood['id']; ?>">Complete</a><?php } ?></td>
                         </tr>
                     <?php $a = $a + 1;

@@ -1,58 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>HTML</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    .About-us {
-	  width: 100%;
-	  text-align: center;
-	  background-color:#DFE3EE;
-	  background-image: url('bg.jpg');
-	  margin-top: 10px;
-	  margin-bottom: 10px;
-	}
-	h1{
-		padding-top: 20px;
-	  color: Black;
-	  font-size: 25px;
-	}
-	img {
-	  border-radius: 50%;
-	}
-	
-	 
-    h3 {
-	  text-shadow:
-	}
-    a {
-      padding: 30px;
-	  text-align: center;
-	  text-decoration: none;
-	  margin: 7px 3px;
-	  background: #3B5998;
-      color: white;
-	  border-radius: 8px;
-	 font-size: 50px;	  
-   } 
-</style>
-</head>
-<body>
-  <div class="About-us">
-    <h1> Contact us </h1>
-	<img src="img\bg.png" width="200" 
-     height="200">
-	<p>Our mission is to empower customers.</p>
-	<hr>
-	<p> Our Administration Team is always available to assist the customers </p>
-<p>Feel free to contact us on given number in any case of Query </p>
-<p> <b>+92-34-5709393</b></p>
-   <h3> Message us Direclty on </h3>
-   <a href="#" class="fa fa-facebook"></a> 
-   <a href="#" class="fa fa-twitter"></a> 
-   <a href="#" class="fa fa-instagram"></a> 
-  </div>
-  <?php include 'footer.php';?>
-</body>
-</html>
+<?php
+include('header.php');
+?>
+<img src="images/bg.jpg" class="fixed-top" width="520" style="position: fixed; z-index:-1; right: 0;" />
+
+<div class="contact-container" style="width: 60%; margin: 9rem auto;">
+	<form action="contactServer.php" method="POST" class="text-center">
+		<img src="images/burger.png" width="150" />
+		<h1 style="font-weight: 700;">Have queries? <span style="color: green">پوچھ لو </span></h1>
+		<input required name="name" type="text" class="form-control contact-input" placeholder="Full Name">
+		<input required name="email" type="email" class="form-control contact-input" placeholder="@email.com">
+		<textarea required name="message" class="form-control contact-input" cols="30" rows="8" placeholder="What's in your mind..."></textarea>
+		<button type="submit" name="submit" class="btn btn grad-btn-4">SEND MESSAGE</button>
+	</form>
+	<?php if(isset($_GET['message'])){ ?>
+	<div class="text-center alert-success" style=" padding: 1rem; border-radius: 12px; width: 80%; margin: 0 auto">
+		<h3><?php echo $_GET['message']; ?></h3>
+	</div>
+	<?php } ?>
+</div>
+
+<?php include('footer.php'); ?>

@@ -115,13 +115,12 @@ if ($_SESSION['name'] == "") {
   <?php
   while ($rowfood = mysqli_fetch_array($row_food_query)) {
     $count = $count + 1; ?>
-    <div class="col-md-12 home-cards" style=" margin: 3rem auto; padding: 3rem; border-radius: 12px;">
+    <div class="col-md-12 home-cards orders-table" style=" margin: 3rem auto; padding: 3rem; border-radius: 12px;">
 
       <img src="images/burger.png" width="200" style="position: absolute; right: 0; opacity: 0.2;" />
 
 
-      <p><img align="left" src="images/tbl<?php echo $rowfood[1]; ?>.jpg" width="220" class="img-responsive" style="opacity: 0.7;
-  filter: alpha(opacity=50)" /></p>
+      <p><img align="left" src="images/tbl<?php echo $rowfood[1]; ?>.jpg" width="220" class="img-responsive" style="border-radius: 12px; height: 150px" /></p>
     <?php
     $timestamp = strtotime($rowfood[4]);
     $date = date('d-m-Y', $timestamp);

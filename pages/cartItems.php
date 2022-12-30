@@ -1,3 +1,5 @@
+<img src="images/bg.jpg" class="fixed-top" width="520" style="position: fixed; z-index:-1; right: 0;" />
+
 <?php
 session_start();
 include('header.php');
@@ -24,11 +26,11 @@ if (isset($_SESSION['user_id'])) {
 ?>
 
 
-    <body style="background-color: #F5F7FA;">
-        <div class="cart-conatiner" style="width: 90%; margin: 0 auto;">
-            <h1 class="text-center">Your Cart Items</h1>
+    <body style="">
+        <div class="cart-conatiner" style="width: 90%; margin: 0 auto; padding: 5rem 0;">
+            <h1 class="text-center" style="padding: 3rem 0; font-weight: 700">Your Cart Items</h1>
             <!-- cards  -->
-            <div class="card-container row" style="padding: 5rem 0;">
+            <div class="card-container row" style="">
                 <?php while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) { ?>
                     <div class="card-body col-md-4" style="margin: 0 0 2rem 0;;">
                         <!-- container  -->

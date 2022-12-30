@@ -17,6 +17,8 @@ $query = "SELECT f.food_menu_id,f.food_menu_name, f.chef_id,f.restaurant_id, c.c
 $row_food_query = mysqli_query($link, $query);
 
 ?>
+<img src="images/bg.jpg" style="position: absolute; z-index:-1; right: 0;" />
+
 <div style="padding: 12rem 0;">
     <?php while ($row = mysqli_fetch_array($row_food_query)) { ?>
         <div class="row container" style="width: 80%; margin: 0 auto;">

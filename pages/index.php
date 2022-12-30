@@ -11,6 +11,9 @@
 </head>
 
 <body>
+<img src="images/bg.jpg" class="fixed-top" width="520" style="position: fixed; z-index:-1; right: 0;" />
+
+
     <?php
     session_start();
     include('header.php');
