@@ -65,7 +65,24 @@ if (isset($_SESSION['user_id'])) {
                     <input type="hidden" id="food_desc" name="food_desc" value="<?php echo $foods_desc; ?>">
                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>">
                     <input type="hidden" id="grand_total" name="grand_total" value="<?php echo $grand_total; ?>">
-                    <button type="submit" class="btn btn-success" style="padding: 0.5rem 4rem;">Confirm order</button>
+                    <button type="submit" name="ondelivery" class="btn btn-success" style="padding: 0.5rem 4rem;">Confirm order</button>
+                </form>
+                <form action="payment.php" method="POST">
+                    <?php require('../config.php'); ?>
+                    <input type="hidden" id="food_desc" name="food_desc" value="<?php echo $foods_desc; ?>">
+                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>">
+                    <input type="hidden" id="grand_total" name="grand_total" value="<?php echo $grand_total; ?>">
+                    <script
+    			        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    			        data-key="<?php echo $publishable_key ?>"
+    			        data-amount="<?php echo $grand_total ?>"
+    			        data-name="<?php echo 'Customer ID: ' . $user_id ?>"
+    			        data-description="<?php echo 'Food Ordered: ' . $foods_desc ?>"
+    			        data-image="images/burger.png"
+    			        data-currency="usd"
+    			        data-email="<?php echo $user_id ?>"
+    			        >
+    			    </script>
                 </form>
             </div>
 

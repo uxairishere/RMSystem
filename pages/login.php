@@ -42,7 +42,7 @@ require('./header.php');
     <div class="container" style="padding: 7rem 0;">
         <div class="row">
         <div class="col-md-6">
-            <img src="images/signup.jpg" width="100%" />
+            <img src="images/login2.jpg" width="100%" />
         </div>
             <div class="col-md-6 ">
                 <h2 class="text-center" style="margin: 9rem 0 2rem 0 ; padding: 3rem 0; font-weight: 800;">Hungry? Let's login and order!</h2>

@@ -401,3 +401,42 @@ box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0p
 .contact-input{
   margin: 0 0 1rem 0;
 }
+
+/* Add food  */
+.add-food-form input{
+  margin: 0 0 1rem 0;
+  border-radius: 30px;
+  
+}
+.add-food-form select{
+  margin: 0 0 1rem 0;
+  border-radius: 30px;
+  
+}
+
+.add-food-form h1{
+  padding-top: 7rem;
+  font-weight: 700;
+}
+
+/* Add Chef  */
+.add-chef-form input{
+  margin: 0 0 1rem 0;
+  border-radius: 30px;
+}
+
+.add-chef-form h1{
+  padding-top: 5rem;
+  font-weight: 700;
+}
+
+/* resturant-form */
+.resturant-form input{
+  margin: 0 0 1rem 0;
+  border-radius: 30px;
+}
+
+.resturant-form h1{
+  padding-top: 5rem;
+  font-weight: 700;
+}
