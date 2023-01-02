@@ -169,11 +169,10 @@
 
                                     <!-- incre decre  -->
                                     <div class="input-group incre-group">
-                                        <button class="btn grad-btn-3" type="button" id="decrement"><i class="bi bi-dash"></i></button>
-                                        <input type="number" id="fperson" name="fperson" readonly>
-                                        <button class="btn grad-btn-danger2" type="button" id="increment"><i class="bi bi-plus"></i></button>
+                                        <button class="btn grad-btn-3 incre" type="button" id="decrement"><i class="bi bi-dash"></i></button>
+                                        <input type="number" id="fperson" class="fperson" name="fperson" readonly>
+                                        <button class="btn grad-btn-danger2 decre" type="button" id="increment"><i class="bi bi-plus"></i></button>
                                     </div>
-
 
 
                                     <input type="hidden" id="food_image" name="food_image" value="<?php echo $rowfood[8]; ?>">
@@ -277,8 +276,6 @@ Apply the same threshold support of 50% and consider the items that exceed 50% (
                                             <button class="btn grad-btn-danger2" type="button" id="increment"><i class="bi bi-plus"></i></button>
                                         </div>
 
-
-
                                         <input type="hidden" id="food_image" name="food_image" value="<?php echo $rowfood[8]; ?>">
                                         <input type="hidden" id="food_name" name="food_name" value="<?php echo $rowfood[1]; ?>">
                                         <input type="hidden" id="food_id" name="food_id" value="<?php echo $rowfood[0]; ?>">
@@ -328,19 +325,21 @@ Apply the same threshold support of 50% and consider the items that exceed 50% (
         return counter;
     }
 
-    const inc = document.getElementById("increment");
-    const input = document.getElementById("fperson");
-    const dec = document.getElementById("decrement");
+    const inc = document.getElementsByClassName("incre");
+    const input = document.getElementsByClassName("fperson");
+    const dec = document.getElementsByClassName("decre");
 
-    inc.addEventListener("click", () => {
+    for(let i = 0 ; i < inc.length ; i ++){
+    inc[i].addEventListener("click", () => {
         increment();
-        input.value = get();
+        input[i].value = get();
     });
 
-    dec.addEventListener("click", () => {
-        if (input.value > 0) {
+    dec[i].addEventListener("click", () => {
+        if (input[i].value > 0) {
             decrement();
         }
-        input.value = get();
+        input[i].value = get();
     });
+}
 </script>
