@@ -35,6 +35,13 @@
     background-size: cover;
     border-radius: 12px;
 }
+.slide-cover-4{
+  background-image: url('../images/cover_4.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+}
 
 /* footer styles */
 .footer {
@@ -322,6 +329,27 @@ border:0px;
   text-decoration: none;
 }
 
+.grad-btn-danger2 {
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  margin: 10px;
+  /* padding: 5px 25px; */
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  /* display: block; */
+  border-radius: 30px;
+}
+
+.grad-btn-danger2:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
          
 .grad-btn-3 {
   background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%);
@@ -333,7 +361,9 @@ border:0px;
   background-size: 200% auto;
   color: white;            
   box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border-radius: 30px;
+
   /* display: block; */
 }
 
@@ -439,4 +469,44 @@ box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0p
 .resturant-form h1{
   padding-top: 5rem;
   font-weight: 700;
+}
+
+/* increment groups  */
+.incre-group input{
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border-color:#0093E9;
+  width: 5rem;
+}
+
+/* About container  */
+.about-container img{
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0;
+}
+
+.about-container h1{
+  padding: 10rem 0 3rem 0;
+  font-weight: 700;
+}
+
+.about-container h2{
+  font-weight: 700;
+  padding: 1rem 0;
+}
+
+.about-container p{
+  font-size: 2rem;
+}
+
+.about-container a{
+  padding: 2rem;
+  border-radius: 50%;
+  font-size: 3rem;
+  background-color: #333;
+  margin: 1rem;
+  text-decoration: none;
+  color: whitesmoke;
 }

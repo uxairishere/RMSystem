@@ -68,18 +68,45 @@ $_SESSION['timeout'] = time();
                 <!-- address  -->
                 <input type="text" class="form-control acc-input" name="Address" id="Address" placeholder="Address" required>
                 <!-- password  -->
-                <input type="Password" class="form-control acc-input" name="Password" id="Password" placeholder="Password" required>
+                <input type="Password" class="form-control acc-input" name="Password" id="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    Please select a valid state.
+                </div>
                 <!-- submit  -->
                 <input type="reset" id="reset" title="reset" value="reset" class="btn btn-primary">
                 <input type="submit" id="submit" title="Register New User" value="Register New User" class="btn btn-primary">
             </form>
             <?php if ($_GET) { ?>
-            <div class="alert alert-danger text-center" style="width: 90%; margin: 1rem auto;">
-                <h3 class="text-warning"><?php echo $_GET['error']; ?></h3>
-            </div>
+                <div class="alert alert-danger text-center" style="width: 90%; margin: 1rem auto;">
+                    <h3 class="text-warning"><?php echo $_GET['error']; ?></h3>
+                </div>
             <?php } ?>
         </div>
     </div>
 </body>
 <?php include('footer.php'); ?>
+<!-- Validation  -->
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
 </html>

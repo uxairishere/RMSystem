@@ -19,7 +19,7 @@ $_SESSION['timeout'] = time();
 if(isset($_POST['ondelivery'])){
 $q = "INSERT INTO usercartorder (price, user_id, orderdesc, payment) VALUES ('$price', '$user_id', '$food_desc', 'On Delivery')";
 
-mysqli_query($link, $q) or die("could not insert into database");
+mysqli_query($link, $q) or die("could not insert into database");   
 }
 if(isset($_POST['debitcard'])){
     $q = "INSERT INTO usercartorder (price, user_id, orderdesc, payment) VALUES ('$price', '$user_id', '$food_desc', 'Paid!')";

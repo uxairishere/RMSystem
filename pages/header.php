@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="files/index.css">
 <!-- font awesome  -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script type="text/javascript">
   jssor_1_slider_init = function() {
 
@@ -272,13 +274,13 @@
         <li class="">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Pakistani Food</a></li>
+            <!-- <li><a href="#">Pakistani Food</a></li>
             <li><a href="#">Chinese Food</a></li>
             <li><a href="#">Indian Food</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Most Favourite</li>
             <li><a href="all_chef.php">All Chef</a></li>
-            <li><a href="all_restuarent.php">All Restaurant</a></li>
+            <li><a href="all_restuarent.php">All Restaurant</a></li> -->
             <li><a href="all_food.php">All Food Menus</a></li>
             <?php if (isset($_SESSION['name'])) { ?>
               <li><a href="predic-menu.php">Predictive Menu</a></li>

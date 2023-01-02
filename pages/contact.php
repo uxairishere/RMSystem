@@ -1,4 +1,14 @@
 <?php
+session_start();
+$inactive = 360; // Set timeout period in seconds
+if (isset($_SESSION['timeout'])) {
+    $session_life = time() - $_SESSION['timeout'];
+    if ($session_life > $inactive) {
+        session_destroy();
+    }
+}
+$_SESSION['timeout'] = time();
+include('include/header.php');
 include('header.php');
 ?>
 <img src="images/bg.jpg" class="fixed-top" width="520" style="position: fixed; z-index:-1; right: 0;" />

@@ -58,6 +58,7 @@
                         <th>Customer</th>
                         <th>Phone</th>
                         <th>Price</th>
+                        <th>Method</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -66,7 +67,7 @@
                     <?php
 
                     $a = 1;
-                    $q2 = "SELECT *, `proj_user`.`user_name`, `proj_user`.`cell`  FROM usercartorder, proj_user WHERE `proj_user`.`user_id`=`usercartorder`.`user_id` order by `order_date` asc";
+                    $q2 = "SELECT *, `proj_user`.`user_name`, `proj_user`.`cell`   FROM usercartorder, proj_user WHERE `proj_user`.`user_id`=`usercartorder`.`user_id` order by `order_date` asc";
 
                     $row_food_query = mysqli_query($link, $q2) or die("could not perform action on database");
                     //echo $q2;
@@ -81,6 +82,7 @@
                             <td><?php echo $rowfood['cell']; ?></td>
 
                             <td><?php echo $rowfood['price']; ?></td>
+                            <td><?php echo $rowfood['payment']; ?></td>
 
                             <td><?php if ($rowfood['order_status'] == 'In Process!') {
                                     echo "<span style='color:red'>";
